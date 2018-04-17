@@ -11,7 +11,7 @@ Spring Session管理session，使得以下的功能更加容易实现：
 
 # Spring Boot 集成Spring session 并存入redis
 ## 1、spring-boot-session-01
-###1、pom.xml
+### 1、pom.xml
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -75,7 +75,7 @@ Spring Session管理session，使得以下的功能更加容易实现：
 
 </project>
 ```
-###2、application.properties
+### 2、application.properties
 ```
 server.port=8777
 # 使用spring session，设置path会导致session丢失，目前未解决。
@@ -86,7 +86,7 @@ spring.redis.host=192.168.21.103
 spring.redis.port=6379
 spring.session.store-type=redis
 ```
-###3、注入RedisSessionConfig
+### 3、注入RedisSessionConfig
 ```
 package com.example.config;
 
@@ -124,7 +124,7 @@ public class RedisSessionConfig {
     }
 }
 ```
-###4、contoller
+### 4、contoller
 ```
 package com.example.web;
 
@@ -173,7 +173,7 @@ public class SessionController {
 }
 
 ```
-###5、配置nginx
+### 5、配置nginx
 ```
         listen       18080;
         server_name  localhost;
@@ -194,12 +194,12 @@ public class SessionController {
 		    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
 		}
 ```
-###6、展示
+### 6、展示
 ![](http://ww1.sinaimg.cn/large/005PjuVtgy1fqfq5d5cxxj31b20ajwg0.jpg)
 
 
-##2、spring-boot-session-02
-###1、application.properties
+## 2、spring-boot-session-02
+### 1、application.properties
 ```
 server.port=8767
 #server.context-path=/chigo-service-ac
@@ -208,7 +208,7 @@ spring.redis.host=192.168.21.103
 spring.redis.port=6379
 spring.session.store-type=redis
 ```
-###2、注入RedisSessionConfig
+### 2、注入RedisSessionConfig
 ```
 /**
  * @author: colg
@@ -228,7 +228,7 @@ public class RedisSessionConfig {
 
 }
 ```
-###3、controller
+### 3、controller
 ```
 package com.example.web;
 
@@ -268,9 +268,9 @@ public class SessionController {
 
 }
 ```
-###4、展示
+### 4、展示
 ![](http://ww1.sinaimg.cn/large/005PjuVtgy1fqfqars9uvj31b40aiabk.jpg)
 
-##3、总结
+## 3、总结
 - spring session使用redis存储session信息，默认使用cookie来传递，应用之间命名空间需要隔离
 - 设置**server.context-path**以后，session将会丢失，有知道怎么解决的小伙伴还请告知一下，谢谢。
